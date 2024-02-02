@@ -67,6 +67,20 @@
 # The Dark Knight Rises  Joseph Gordon-Levitt  John Blake
 # The Dark Knight Rises  Anne Hathaway         Selina Kyle
 
+
+# --- Create the models using 
+# rails generate model Movie
+# rails generate model Actor
+# rails generate model Character
+
+# ---- If needed, create the migrate files using
+# rails generate migration CreateMovie
+# rails generate migration CreateActor
+# rails generate migration CreateCharacter
+
+# --- Add the schema information in the migrate files as shown in the migrate files
+# --- Run this command to load the schemas to database: rails db:migrate
+
 # Delete existing data, so you'll start fresh each time this script is run.
 # Use `Model.destroy_all` code.
 
@@ -256,13 +270,9 @@ character.save
 
 character = Character.new
 character["movie_id"] = 2 
-character["actor_id"] = 1,
+character["actor_id"] = 1
 character["character_name"] = "'Selina Kyle"
 character.save
-
-
-puts "Characters: #{Character.all.count}"
-
 
 
 # Prints a header for the movies output
@@ -274,13 +284,12 @@ puts ""
 
 movies = Movie.all
 for movie in movies
-  # read the relevant columns from the salesperson row
   id = movie["id"]
   title = movie["title"]
   year = movie["year_released"]
   mpaa = movie["mpaa"]
   studio = movie["studio"]
-  # display a string with the relevant columns
+
   puts "#{id}\t#{title}\t#{year}\t#{mpaa}\t#{studio}"
 end
 
@@ -301,9 +310,8 @@ characters.each do |character|
   actor_name = actor["actor_name"]
   character_name = character["character_name"]
 
-  puts "Movie: #{title}"
-  puts "Actor: #{actor_name}"
-  puts "Character: #{character_name}"
-  puts ""
+  puts "#{title}\t#{actor_name}\t#{character_name}"
 end
 
+# ---- Run this file using rails
+# runner kmdb.rb
