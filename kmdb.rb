@@ -69,14 +69,26 @@
 
 # Delete existing data, so you'll start fresh each time this script is run.
 # Use `Model.destroy_all` code.
-# TODO!
+
+if ActiveRecord::Base.connection.data_source_exists?('Movies')
+    Movies.delete_all
+end
+
+if ActiveRecord::Base.connection.data_source_exists?('Actors')
+    Actors.delete_all
+end
+
+if ActiveRecord::Base.connection.data_source_exists?('Characters')
+    Characters.delete_all
+end
 
 # Generate models and tables, according to the domain model.
-# TODO!
 
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
 # TODO!
+
+puts "Movies: #{Movies.all.count}"
 
 # Prints a header for the movies output
 puts "Movies"
