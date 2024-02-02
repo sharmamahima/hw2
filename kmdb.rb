@@ -70,6 +70,8 @@
 # Delete existing data, so you'll start fresh each time this script is run.
 # Use `Model.destroy_all` code.
 
+Movie.delete_all
+
 if ActiveRecord::Base.connection.data_source_exists?('Movies')
     Movies.delete_all
 end
